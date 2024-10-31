@@ -1,17 +1,15 @@
-# Используем базовый образ Python
+# Используйте официальный образ Python
 FROM python:3.12.3
 
-# Устанавливаем рабочую директорию
+# Установите рабочую директорию
 WORKDIR /app
 
-# Копируем файлы зависимостей
+# Скопируйте файлы с зависимостями
 COPY requirements.txt requirements.txt
-
-# Устанавливаем зависимости
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Копируем приложение
+# Скопируйте исходный код
 COPY app.py app.py
 
-# Запускаем Gunicorn (или uWSGI)
-CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:8000"]
+# Укажите команду для запуска приложения
+CMD ["python", "app.py"]
